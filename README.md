@@ -36,3 +36,9 @@ Nevertheless, there still is much room for possible improvements and optimizatio
 
 As this is a passion project, the engine has no implementation timeline etc.
 Future functionality will be add whenever I feel like it.
+
+## Some sources and inspirations
+* [Box2D-lite](https://github.com/erincatto/box2d-lite)
+* [Impulse Engine](https://github.com/RandyGaul/ImpulseEngine)
+* [Collision Response by Chris Hecker](http://www.chrishecker.com/images/e/e7/Gdmphys3.pdf)
+* and various other articles & papers on physics engines!
