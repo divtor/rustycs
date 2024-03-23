@@ -1,6 +1,6 @@
 # Rustycs
 2D physics engine written in Rust.<br><br>
-Usage:[Demo application using macroquad](https://github.com/divtor/rustycs-macroquad-demo)
+Usage: [Demo application using macroquad](https://github.com/divtor/rustycs-macroquad-demo)
 
 ## Setups
 Rust:
