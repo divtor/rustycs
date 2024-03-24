@@ -1,7 +1,7 @@
 //! A custom made Vector2 class, specialized for rustycs.
 
-use std::{cmp::PartialEq, f32::consts::PI, fmt::Display, ops};
 use rand::Rng;
+use std::{cmp::PartialEq, f32::consts::PI, fmt::Display, ops};
 
 pub const ZERO: Vector2 = Vector2::new(0., 0.);
 pub const NORMAL_UP: Vector2 = Vector2::new(0., 1.);
