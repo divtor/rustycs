@@ -1,9 +1,9 @@
-pub use crate::attractor::*;
-pub use crate::body::*;
 pub use crate::collision::*;
-pub use crate::force::*;
-pub use crate::material::*;
-pub use crate::maths::*;
+pub use crate::entities::attractor::*;
+pub use crate::entities::body::*;
+pub use crate::entities::material::*;
+pub use crate::entities::transform::*;
+pub use crate::environment::force::*;
+pub use crate::environment::world::*;
+pub use crate::math::*;
 pub use crate::shapes::*;
-pub use crate::transforms::*;
-pub use crate::world::*;

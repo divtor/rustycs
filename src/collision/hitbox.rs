@@ -1,7 +1,7 @@
 //! Data structure used to wrap bodies in the physics world.<br>
 //! If the hitboxes do not intersect, two bodies cannot possible intersect or collide at all.
 
-use crate::maths::Vector2;
+use crate::math::Vector2;
 
 #[derive(Clone, Debug, Default)]
 pub struct Hitbox {

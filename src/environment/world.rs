@@ -9,11 +9,16 @@
 use std::{collections::HashMap, fmt::Display, mem, time::Instant};
 
 use crate::{
-    body::{Body, BodyType::*},
-    collision::{correct_position, detect_collision, resolve_collision, Manifold},
-    force::Force,
-    maths::{vector2::ZERO, Vector2},
-    prelude::{detection::hitboxes_collide, Attractor},
+    collision::{
+        correct_position, detect_collision, detection::hitboxes_collide, resolve_collision,
+        Manifold,
+    },
+    entities::{
+        attractor::Attractor,
+        body::{Body, BodyType::*},
+    },
+    environment::force::Force,
+    math::{vector2::ZERO, Vector2},
 };
 
 #[derive(Default)]

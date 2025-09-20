@@ -1,10 +1,6 @@
-pub mod attractor;
-pub mod body;
 pub mod collision;
-pub mod force;
-pub mod material;
-pub mod maths;
+pub mod entities;
+pub mod environment;
+pub mod math;
 pub mod prelude;
 pub mod shapes;
-pub mod transforms;
-pub mod world;

@@ -1,6 +1,6 @@
 //! Axis-aligned bounding box shape, essentially non-rotatable rectangles.
 
-use crate::{collision::Hitbox, maths::Vector2};
+use crate::{collision::Hitbox, math::Vector2};
 use std::fmt::Display;
 
 pub type AABBVertices = [Vector2; 4];

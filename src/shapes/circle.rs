@@ -1,6 +1,6 @@
 //! Circle shape.
 
-use crate::{maths::Vector2, prelude::Hitbox};
+use crate::{math::Vector2, prelude::Hitbox};
 use std::{f32::consts::PI, fmt::Display};
 
 pub type CircleVertices = Vector2;

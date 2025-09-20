@@ -2,9 +2,9 @@
 //! Needs additional information in the form of a manifold.
 
 use crate::{
-    body::Body,
     collision::Manifold,
-    maths::{vector2::cross, Vector2},
+    entities::body::Body,
+    math::{vector2::cross, Vector2},
 };
 
 pub fn resolve_collision(m: &mut Manifold, bodies: &mut [Body]) {

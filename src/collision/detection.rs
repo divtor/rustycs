@@ -5,9 +5,9 @@
 //! - Actual collisions in narrow phase, that produce a manifold
 
 use crate::{
-    body::Body,
     collision::{Hitbox, Manifold},
-    maths::{
+    entities::body::Body,
+    math::{
         vector2::{dot, NORMAL_DOWN, NORMAL_LEFT, NORMAL_RIGHT, NORMAL_UP, ZERO},
         Vector2,
     },
@@ -15,7 +15,8 @@ use crate::{
 };
 
 // --------------------------------- BROAD PHASE ---------------------------------
-/// Detects if the hitboxes of given bodies intersect, if not no further checks are necessary, because they cannot possibly collide.
+/// Detects if the hitboxes of given bodies intersect, if not no further checks are necessary,
+/// because they cannot possibly collide.
 pub fn hitboxes_collide(a: &Body, b: &Body) -> bool {
     let hitbox_a: Hitbox = &a.hitbox + a.transform.location;
     let hitbox_b: Hitbox = &b.hitbox + b.transform.location;
@@ -59,8 +60,8 @@ pub fn detect_collision(a: &Body, a_idx: usize, b: &Body, b_idx: usize) -> Optio
 
 // --------------------------------- CASE HANDLING ---------------------------------
 fn circle_circle(a: &Body, a_idx: usize, b: &Body, b_idx: usize) -> Option<Manifold> {
-    let ra = a.shape.as_circle().r;
-    let rb = b.shape.as_circle().r;
+    let ra = a.shape.copy_as_circle().r;
+    let rb = b.shape.copy_as_circle().r;
 
     let direction = b.transform.location - a.transform.location;
     let r = ra + rb;
@@ -83,7 +84,7 @@ fn circle_circle(a: &Body, a_idx: usize, b: &Body, b_idx: usize) -> Option<Manif
 }
 
 fn circle_aabb(circle: &Body, circle_idx: usize, aabb: &Body, aabb_idx: usize) -> Option<Manifold> {
-    let r = circle.shape.as_circle().r;
+    let r = circle.shape.copy_as_circle().r;
 
     let aabb_max = aabb.hitbox.max + aabb.transform.location;
     let aabb_min = aabb.hitbox.min + aabb.transform.location;
@@ -158,7 +159,7 @@ fn circle_polygon(
     polygon: &Body,
     polygon_idx: usize,
 ) -> Option<Manifold> {
-    let r = circle.shape.as_circle().r;
+    let r = circle.shape.copy_as_circle().r;
 
     let contact_candidate = contacts_single(circle.transform.location, polygon);
 
@@ -195,8 +196,8 @@ fn aabb_aabb(a: &Body, a_idx: usize, b: &Body, b_idx: usize) -> Option<Manifold>
     let mut m = Manifold::new(a, a_idx, b, b_idx);
 
     let direction = b.transform.location - a.transform.location;
-    let aabb_1 = a.shape.as_aabb();
-    let aabb_2 = b.shape.as_aabb();
+    let aabb_1 = a.shape.copy_as_aabb();
+    let aabb_2 = b.shape.copy_as_aabb();
 
     let x_overlap = aabb_1.max.x + aabb_2.max.x - direction.x.abs();
     let y_overlap = aabb_1.max.y + aabb_2.max.y - direction.y.abs();

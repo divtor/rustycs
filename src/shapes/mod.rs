@@ -15,8 +15,8 @@ pub use circle::Circle;
 pub use polygon::Polygon;
 
 use crate::{
-    body::{Vertices, MAX_VERTICE_COUNT},
-    maths::vector2::ZERO,
+    entities::body::{Vertices, MAX_VERTICE_COUNT},
+    math::vector2::ZERO,
 };
 
 /// OBBs are defined as Polygons in this engine.
@@ -29,7 +29,7 @@ pub enum Shape {
 
 // translators
 impl Shape {
-    pub fn as_circle(&self) -> Circle {
+    pub fn copy_as_circle(&self) -> Circle {
         match self {
             Shape::Circle(c) => Circle::new(c.r),
             _ => {
@@ -38,11 +38,7 @@ impl Shape {
         }
     }
 
-    pub fn is_circle(&self) -> bool {
-        matches!(self, Shape::Circle(_))
-    }
-
-    pub fn as_aabb(&self) -> AABB {
+    pub fn copy_as_aabb(&self) -> AABB {
         match self {
             Shape::AABB(r) => AABB::new(r.max.x * 2.0, r.max.y * 2.0),
             _ => {
@@ -51,11 +47,7 @@ impl Shape {
         }
     }
 
-    pub fn is_aabb(&self) -> bool {
-        matches!(self, Shape::AABB(_))
-    }
-
-    pub fn as_polygon(&self) -> Polygon {
+    pub fn copy_as_polygon(&self) -> Polygon {
         match self {
             Shape::Polygon(p) => Polygon::new(p.verts_to_vec()).unwrap(),
             _ => {
@@ -63,9 +55,14 @@ impl Shape {
             }
         }
     }
+}
 
-    pub fn is_polygon(&self) -> bool {
-        matches!(self, Shape::Polygon(_))
+impl TryInto<Circle> for Shape {
+    // TODO: impl this or delete
+    type Error = u32;
+
+    fn try_into(self) -> Result<Circle, Self::Error> {
+        todo!()
     }
 }
 

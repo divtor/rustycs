@@ -2,8 +2,8 @@
 //! Pulls other bodies in the scene towards it according to their mass, relative to the attractor's mass.
 
 use crate::{
-    body::Body,
-    maths::{vector2::ZERO, Vector2},
+    entities::body::Body,
+    math::{vector2::ZERO, Vector2},
 };
 
 #[derive(PartialEq, Clone, Debug)]

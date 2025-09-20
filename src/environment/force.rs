@@ -3,7 +3,7 @@
 
 use std::fmt::Display;
 
-use crate::maths::Vector2;
+use crate::math::Vector2;
 
 #[derive(Clone)]
 pub struct Force {

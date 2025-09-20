@@ -1,6 +1,6 @@
 //! Contains all transform relevant information of a specific body
 
-use crate::maths::{vector2::ZERO, Vector2};
+use crate::math::{vector2::ZERO, Vector2};
 use std::fmt::Display;
 
 #[derive(Clone, Debug, Default)]

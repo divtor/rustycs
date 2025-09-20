@@ -12,11 +12,11 @@ use std::fmt::Display;
 
 use crate::{
     collision::Hitbox,
-    material::Material,
-    maths::{vector2::ZERO, Vector2},
+    entities::material::Material,
+    entities::transform::Transform,
+    math::{vector2::ZERO, Vector2},
     shapes::Shape,
     shapes::*,
-    transforms::Transform,
 };
 
 #[derive(PartialEq, Clone, Debug)]
@@ -139,7 +139,7 @@ impl Body {
     pub fn rotate(&mut self, dt: f32) {
         let angle = self.transform.angular_velocity;
 
-        if !self.shape.is_aabb() && angle != 0.0 {
+        if !matches!(self.shape, Shape::AABB(_)) && angle != 0.0 {
             let (vertices, len) = self.get_vertices();
             for (idx, v) in vertices.into_iter().enumerate().take(len) {
                 self.vertices[idx] = Vector2::rotated(v, angle * dt);
@@ -150,7 +150,7 @@ impl Body {
     }
 
     fn update_hitbox(&mut self) {
-        if self.shape.is_circle() || self.shape.is_aabb() {
+        if matches!(self.shape, Shape::Circle(_)) || matches!(self.shape, Shape::AABB(_)) {
             return;
         }
 
@@ -158,13 +158,13 @@ impl Body {
     }
 
     fn generate_hitbox(&mut self) {
-        if self.shape.is_circle() {
-            self.hitbox = self.shape.as_circle().get_hitbox();
+        if matches!(self.shape, Shape::Circle(_)) {
+            self.hitbox = self.shape.copy_as_circle().get_hitbox();
             return;
         }
 
-        if self.shape.is_aabb() {
-            self.hitbox = self.shape.as_aabb().get_hitbox();
+        if matches!(self.shape, Shape::AABB(_)) {
+            self.hitbox = self.shape.copy_as_aabb().get_hitbox();
             return;
         }
 
@@ -275,7 +275,7 @@ impl Body {
     }
 
     pub fn rotate_fixed_angle(&mut self, angle: f32) {
-        if !self.shape.is_aabb() && angle != 0.0 {
+        if !matches!(self.shape, Shape::AABB(_)) && angle != 0.0 {
             let (vertices, len) = self.get_vertices();
             for (idx, v) in vertices.iter().enumerate().take(len) {
                 self.vertices[idx] = Vector2::rotated(*v, angle);

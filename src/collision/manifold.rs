@@ -1,8 +1,8 @@
 //! Stores information about individual collisions to properly resolve them.<br>
 
 use crate::{
-    body::Body,
-    maths::{
+    entities::body::Body,
+    math::{
         vector2::{cross, dot, ZERO},
         Vector2,
     },

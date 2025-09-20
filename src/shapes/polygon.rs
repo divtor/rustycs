@@ -3,8 +3,8 @@
 use std::fmt::Display;
 
 use crate::{
-    body::Vertices,
-    maths::{vector2::ZERO, Vector2},
+    entities::body::Vertices,
+    math::{vector2::ZERO, Vector2},
 };
 
 pub type PolygonVertices = (Vertices, usize);
